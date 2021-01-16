@@ -1,0 +1,126 @@
+
+Add Firebase SDK
+Instructions for Gradle
+|
+UnityC++
+The Google services plugin for Gradle loads the google-services.json file that you just downloaded. Modify your build.gradle files to use the plugin.
+
+Project-level build.gradle (<project>/build.gradle):
+
+
+
+buildscript {
+  repositories {
+    // Check that you have the following line (if not, add it):
+    google()  // Google's Maven repository
+  }
+  dependencies {
+    ...
+    // Add this line
+    classpath 'com.google.gms:google-services:4.3.4'
+  }
+}
+
+allprojects {
+  ...
+  repositories {
+    // Check that you have the following line (if not, add it):
+    google()  // Google's Maven repository
+    ...
+  }
+}
+Java
+Kotlin
+App-level build.gradle (<project>/<app-module>/build.gradle):
+
+
+
+
+apply plugin: 'com.android.application'
+// Add this line
+apply plugin: 'com.google.gms.google-services'
+
+dependencies {
+  // Import the Firebase BoM
+  implementation platform('com.google.firebase:firebase-bom:26.2.0')
+
+  // Add the dependency for the Firebase SDK for Google Analytics
+  // When using the BoM, don't specify versions in Firebase dependencies
+  cc
+
+  // Add the dependencies for any other desired Firebase products
+  // https://firebase.google.com/docs/android/setup#available-libraries
+}
+_____________________________________________________________________________________________________________________________
+
+firebase errror 
+ (71fdda9) Stream closed with status: Status{code=PERMISSION_DENIED, description=Cloud Firestore API has not been used in project 566565803576 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/firestore.googleapis.com/overview?project=566565803576 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry., cause=null}.
+
+ ------------------
+ body 
+
+ body: new ListView.builder(
+            itemCount: snapshot.length,
+            itemBuilder: (context, index) {
+              return new Card(
+                elevation: 10.0,
+                margin: EdgeInsets.all(10.0),
+                child: new Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: new Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      new CircleAvatar(
+                        child: new Text(snapshot[index].data()['title'][0]),
+                        backgroundColor: Colors.redAccent,
+                        foregroundColor: Colors.white,
+                      ),
+                      new SizedBox(
+                        width: 10.0,
+                      ),
+                      new Container(
+                        width: 210.0,
+                        child: new Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            new InkWell(
+                              child: new Text(
+                                snapshot[index].data()['title'],
+                                style: TextStyle(
+                                    fontSize: 22.0, color: Colors.green),
+                                maxLines: 1,
+                              ),
+                              onTap: () {
+                                passData(snapshot[index]);
+                              },
+                            ),
+                            new SizedBox(
+                              height: 5.0,
+                            ),
+                            new Text(
+                              snapshot[index].data()['content'],
+                              maxLines: 2,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            })
+            
+
+            actions: <Widget>[
+          new IconButton(
+              icon: new Icon(Icons.search),
+              onPressed: () => debugPrint("search")),
+          new IconButton(
+              icon: new Icon(Icons.add), onPressed: () => debugPrint("Add")),
+        ],
+
+
+        1. learn vsc upload to github
+        2. //screenrecorder.
+        3. read and understand getting started page in flutter.dev
+        4. //read the code again and try to understand. 
